@@ -2,6 +2,19 @@
 
 Este é um projeto desenvolvido com [Next.js](https://nextjs.org), inicializado utilizando [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# 📋 Pré-requisitos
+
+Antes de iniciar, verifique se possui instalado:
+
+- Node.js (recomendado versão LTS ou >= 18)
+- npm, yarn, pnpm ou bun
+
+Verificar versões:
+
+```bash
+node -v
+npm -v
+
 ---
 
 ## 🚀 Como começar
@@ -9,11 +22,11 @@ Este é um projeto desenvolvido com [Next.js](https://nextjs.org), inicializado 
 Primeiro, execute o servidor de desenvolvimento:
 
 npm run dev
-# ou
+ ou
 yarn dev
-# ou
+ ou
 pnpm dev
-# ou
+ ou
 bun dev
 
 Abra http://localhost:3000 no navegador para visualizar o resultado.
