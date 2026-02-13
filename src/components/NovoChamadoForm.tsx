@@ -33,10 +33,10 @@ const prioridadeOptions: { value: ChamadoPrioridade; label: string }[] = [
 const chamadoSchema = z.object({
     titulo: z.string().min(5, 'O título deve ter no mínimo 5 caracteres.'),
     area: z.enum(['Refrigeração', 'Energia', 'Ar-condicionado', 'Água'], {
-        errorMap: () => ({ message: 'Selecione uma área válida.' }),
+        message: 'Selecione uma área válida.',
     }),
     prioridade: z.enum(['Crítica', 'Alta', 'Média', 'Baixa'], {
-        errorMap: () => ({ message: 'Selecione uma prioridade válida.' }),
+        message: 'Selecione uma prioridade válida.',
     }),
     equipamento: z.string().min(3, 'O nome do equipamento é obrigatório.'),
     instalacao: z.string().min(3, 'O nome da instalação é obrigatório.'),

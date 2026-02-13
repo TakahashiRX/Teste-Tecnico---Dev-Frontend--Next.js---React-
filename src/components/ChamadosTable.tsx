@@ -117,7 +117,7 @@ const ChamadosTable = () => {
     return (
         <>
             <Card>
-                <Space direction={screens.xs ? 'vertical' : 'horizontal'} style={{ marginBottom: 16, width: '100%', justifyContent: 'space-between' }}>
+                <Space orientation={screens.xs ? 'vertical' : 'horizontal'} style={{ marginBottom: 16, width: '100%', justifyContent: 'space-between' }}>
                     <Search placeholder="Buscar por título, equipamento..." onSearch={handleSearch} style={{ width: screens.xs ? '100%' : 300 }} allowClear />
                     <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)} style={{ width: screens.xs ? '100%' : 'auto' }}>
                         Novo Chamado
@@ -150,7 +150,7 @@ const ChamadosTable = () => {
 
             <Drawer
                 title={`Detalhes do Chamado #${selectedChamado?.id}`}
-                width={!screens.lg ? '100%' : 720} // Ocupa 100% da tela em breakpoints menores que 'lg'
+                size={!screens.lg ? '100%' : 720} // Ocupa 100% da tela em breakpoints menores que 'lg'
                 onClose={closeDrawer}
                 open={isDrawerVisible}
                 destroyOnClose
