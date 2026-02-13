@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { Table, Input, Button, Space, Card, Alert, Drawer, Descriptions, Divider, Timeline, Grid } from 'antd';
 import type { TableProps } from 'antd';
 import { getChamados, GetChamadosParams } from '@/api/chamados';
@@ -28,7 +28,7 @@ const ChamadosTable = () => {
     const { data, isLoading, isError, error, refetch } = useQuery({
         queryKey: ['chamados', params],
         queryFn: () => getChamados(params),
-        keepPreviousData: true,
+        placeholderData: keepPreviousData,
     });
 
     const handleTableChange: TableProps<Chamado>['onChange'] = (pagination, filters, sorter) => {
