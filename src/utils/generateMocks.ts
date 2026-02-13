@@ -2,8 +2,17 @@ import { faker } from '@faker-js/faker';
 import { Chamado, ChamadoStatus, ChamadoPrioridade, ChamadoArea } from '@/types/chamados';
 import baseChamados from '@/mocks/chamados.json';
 
-// Tipagem para garantir que o JSON importado está correto
-const typedBaseChamados: Chamado[] = baseChamados as Chamado[];
+type BaseChamadoJson = Omit<Chamado, 'id' | 'responsavel'> & {
+    id: number | string;
+    responsavel?: string | null;
+};
+
+// Normaliza o formato do JSON para o contrato da interface Chamado
+const typedBaseChamados: Chamado[] = (baseChamados as BaseChamadoJson[]).map((chamado) => ({
+    ...chamado,
+    id: String(chamado.id),
+    responsavel: chamado.responsavel ?? undefined,
+}));
 
 const statusOptions: ChamadoStatus[] = ["Aberto", "Em andamento", "Resolvido", "Cancelado"];
 const priorityOptions: ChamadoPrioridade[] = ["Crítica", "Alta", "Média", "Baixa"];
@@ -39,9 +48,6 @@ export const generateMockChamados = (total = 1200): Chamado[] => {
     for (let i = 0; i < needed; i++) {
         newChamados.push(generateRandomChamado(i));
     }
-    
-    // O id no JSON está como number, mas na interface é string. Vamos garantir a consistência.
-    const consistentBaseChamados = typedBaseChamados.map(c => ({...c, id: c.id.toString()}));
 
-    return [...consistentBaseChamados, ...newChamados];
+    return [...typedBaseChamados, ...newChamados];
 };
